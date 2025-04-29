@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Platform - Boniface Mwenda</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/project-details.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .project-details {
+            padding: 120px 5% 60px;
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+        }
+
+        .project-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--glass);
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+        }
+
+        .project-container h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .project-showcase {
+            margin: 2rem 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+            aspect-ratio: 16/9; /* Maintains consistent aspect ratio */
+        }
+
+        .project-showcase img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures image covers the container without distortion */
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .project-showcase img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Responsive adjustments for different screen sizes */
+        @media (max-width: 1200px) {
+            .project-showcase {
+                aspect-ratio: 16/10;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .project-showcase {
+                aspect-ratio: 16/11;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-showcase {
+                aspect-ratio: 16/12;
+            }
+
+            .project-container {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .project-showcase {
+                aspect-ratio: 4/3; /* More square-ish ratio for mobile */
+                margin: 1rem 0;
+            }
+
+            .project-container {
+                padding: 1rem;
+            }
+        }
+
+        .project-section {
+            margin: 3rem 0;
+        }
+
+        .project-section h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .project-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .feature-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--light);
+            font-size: 1.1rem;
+        }
+
+        .feature-list li i {
+            color: var(--primary);
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .tech-tag {
+            background: var(--glass);
+            color: var(--light);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            border: 1px solid var(--glass-border);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .tech-tag:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .process-list {
+            color: var(--light);
+            margin-left: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .challenges {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .challenge-item {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .challenge-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .challenge-item h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .challenge-item p {
+            color: var(--light);
+            line-height: 1.6;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 3rem;
+            justify-content: center;
+        }
+
+        .demo-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.8rem;
+            border-radius: 25px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .demo-link:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .project-details {
+                padding: 100px 20px 40px;
+            }
+
+            .project-container h1 {
+                font-size: 2rem;
+            }
+
+            .project-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .feature-list {
+                grid-template-columns: 1fr;
+            }
+
+            .challenges {
+                grid-template-columns: 1fr;
+            }
+
+            .project-links {
+                flex-direction: column;
+            }
+
+            .demo-link {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="../index.html" class="logo">Boniface<span class="logo-accent">Mwenda</span></a>
+            <div class="nav-links">
+                <a href="../index.html#home">Home</a>
+                <a href="../index.html#portfolio">Portfolio</a>
+                <a href="../index.html#blog">Blog</a>
+                <a href="../index.html#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="project-details">
+        <div class="project-container">
+            <h1>Custom Blog Platform</h1>
+            
+            <div class="project-showcase">
+                <img src="../assets/images/blog platform.png" alt="Blog Platform Screenshot">
+            </div>
+
+            <section class="project-section">
+                <h2>Project Overview</h2>
+                <p>A modern, feature-rich blog platform built with a focus on content management and markdown support. This platform enables writers and content creators to easily publish and manage their content while providing a seamless reading experience for visitors.</p>
+            </section>
+
+            <section class="project-section">
+                <h2>Key Features</h2>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> Markdown editor with live preview</li>
+                    <li><i class="fas fa-check"></i> Custom CMS dashboard for content management</li>
+                    <li><i class="fas fa-check"></i> SEO optimization tools</li>
+                    <li><i class="fas fa-check"></i> Image optimization and CDN integration</li>
+                    <li><i class="fas fa-check"></i> Category and tag management</li>
+                    <li><i class="fas fa-check"></i> User authentication and role-based access</li>
+                    <li><i class="fas fa-check"></i> Comment system with moderation</li>
+                    <li><i class="fas fa-check"></i> Analytics integration</li>
+                </ul>
+            </section>
+
+            <section class="project-section">
+                <h2>Technology Stack</h2>
+                <div class="tech-stack">
+                    <span class="tech-tag">Next.js</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">MongoDB</span>
+                    <span class="tech-tag">Express</span>
+                    <span class="tech-tag">AWS S3</span>
+                    <span class="tech-tag">Cloudinary</span>
+                    <span class="tech-tag">GraphQL</span>
+                    <span class="tech-tag">JWT</span>
+                </div>
+            </section>
+
+            <section class="project-section">
+                <h2>Development Process</h2>
+                <p>The development followed an iterative approach with continuous feedback from content creators:</p>
+                <ol class="process-list">
+                    <li>Initial research and requirement gathering from content creators</li>
+                    <li>UI/UX design with focus on content readability</li>
+                    <li>Core functionality implementation including markdown support</li>
+                    <li>CMS dashboard development</li>
+                    <li>Integration of media management and optimization</li>
+                    <li>Security implementation and testing</li>
+                    <li>Performance optimization and SEO enhancement</li>
+                </ol>
+            </section>
+
+            <section class="project-section">
+                <h2>Challenges & Solutions</h2>
+                <div class="challenges">
+                    <div class="challenge-item">
+                        <h3>Image Optimization</h3>
+                        <p>Implemented automatic image optimization and lazy loading using Cloudinary to improve page load times while maintaining image quality.</p>
+                    </div>
+                    <div class="challenge-item">
+                        <h3>Real-time Preview</h3>
+                        <p>Developed a custom markdown parser with real-time preview functionality using web workers to prevent UI blocking.</p>
+                    </div>
+                    <div class="challenge-item">
+                        <h3>Content Caching</h3>
+                        <p>Implemented intelligent caching strategies using Redis to improve content delivery speed and reduce database load.</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="project-links">
+                <a href="https://blog-platform-demo.bonifacemwenda.com" class="demo-link" target="_blank">
+                    <i class="fas fa-external-link-alt"></i>
+                    Live Demo
+                </a>
+                <a href="https://github.com/drixaledripking/blog-platform" class="demo-link" target="_blank">
+                    <i class="fab fa-github"></i>
+                    Source Code
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <span class="logo">Boniface<span class="logo-accent">Mwenda</span></span>
+                    <p class="footer-description">Delivering innovative tech solutions and exceptional digital experiences.</p>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/drixaledripking" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/Boniface Mwenda" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://twitter.com/BonifaceMw72085" target="_blank"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-phone"></i> +254794862787</li>
+                    <li><i class="fas fa-envelope"></i> mwendaboniface146@gmail.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Boniface Mwenda. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,146 @@
+.blog-post {
+    max-width: 900px;
+    margin: 80px auto 40px;
+    padding: 0 20px;
+}
+
+.blog-post-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.blog-post-header h1 {
+    font-size: 2.5rem;
+    color: var(--light);
+    margin-bottom: 1rem;
+}
+
+.blog-post-meta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    color: var(--light);
+    opacity: 0.8;
+    flex-wrap: wrap;
+}
+
+.blog-post-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.post-author img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+
+.blog-post-image {
+    margin: 2rem 0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.blog-post-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.blog-post-content {
+    color: var(--light);
+    line-height: 1.8;
+}
+
+.blog-post-content h2 {
+    font-size: 1.8rem;
+    margin: 2rem 0 1rem;
+    color: var(--primary);
+}
+
+.blog-post-content p {
+    margin-bottom: 1.5rem;
+}
+
+.blog-post-content ul {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+}
+
+.blog-post-content li {
+    margin-bottom: 0.5rem;
+}
+
+.blog-post-tags {
+    margin: 3rem 0;
+    padding-top: 2rem;
+    border-top: 1px solid var(--glass-border);
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.tags span {
+    background: var(--glass);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    border: 1px solid var(--glass-border);
+}
+
+.share-section {
+    margin: 3rem 0;
+    text-align: center;
+}
+
+.social-share {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-share a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--glass);
+    color: var(--light);
+    transition: all 0.3s ease;
+    border: 1px solid var(--glass-border);
+}
+
+.social-share a:hover {
+    transform: translateY(-3px);
+    color: var(--primary);
+}
+
+@media (max-width: 768px) {
+    .blog-post-header h1 {
+        font-size: 2rem;
+    }
+
+    .blog-post-meta {
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .blog-post {
+        margin-top: 60px;
+    }
+
+    .blog-post-header h1 {
+        font-size: 1.8rem;
+    }
+}
